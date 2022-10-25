@@ -1,6 +1,6 @@
-import { TimeTravelerInputModel, TimeTravelerModel } from "../model";
+import { Handler, TimeTravelerInputModel, TimeTravelerModel } from "../model";
 
-export function createTimeTraveler(_parent: any, args: { input: TimeTravelerInputModel }): TimeTravelerModel {
+export const createTimeTraveler: Handler = (_parent: any, args: { input: TimeTravelerInputModel }): TimeTravelerModel => {
   const { input } = args;
 
   const timeTraveler = {
@@ -11,4 +11,4 @@ export function createTimeTraveler(_parent: any, args: { input: TimeTravelerInpu
   };
 
   return timeTraveler;
-}
+};

@@ -1,5 +1,4 @@
 import { gql } from "apollo-server";
-import { createTimeTraveler } from "../modules";
 
 export const typeDefs = gql`
   scalar Date
@@ -25,14 +24,3 @@ export const typeDefs = gql`
     createTimeTraveler(input: TimeTravelerInput!): TimeTraveler!
   }
 `;
-
-export const resolvers = {
-  Query: {
-    hello: () => {
-      return "Hello world!";
-    },
-  },
-  Mutation: {
-    createTimeTraveler,
-  },
-};
