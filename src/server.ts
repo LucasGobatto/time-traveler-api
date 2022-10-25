@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { ApolloConfig } from "./api";
+import { DbConfig } from "./data";
 
 export namespace Server {
   export async function run() {
@@ -8,6 +9,8 @@ export namespace Server {
 
     app.use(cors());
     app.use(express.json());
+
+    await DbConfig();
 
     const port = process.env.PORT ?? 4004;
     const apolloServer = ApolloConfig();
