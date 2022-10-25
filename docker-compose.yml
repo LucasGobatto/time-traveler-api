@@ -1,0 +1,10 @@
+localdb:
+  image: postgres:11.2
+  ports:
+    - "5432:5432"
+  volumes:
+    - ./db/dumps:/app-db-dumps
+  environment:
+    - POSTGRES_USER=time_traveler
+    - POSTGRES_PASSWORD=TimeTraveler123
+    - POSTGRES_DB=time_traveler_db
