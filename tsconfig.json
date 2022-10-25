@@ -8,7 +8,9 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "strictNullChecks": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "exclude": ["dist", "node_modules"]
 }

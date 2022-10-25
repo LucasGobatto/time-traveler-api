@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { ApolloConfig } from "./api";
-import { DbConfig } from "./data/db.config";
+import { DbConfig } from "./data";
 
 export namespace Server {
   export async function run() {

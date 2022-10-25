@@ -1,13 +1,19 @@
 import path from "path";
 import { DataSource } from "typeorm";
 
+const commonOptions = {
+  type: "postgres" as const,
+  entities: [path.join(__dirname, "..", "entities", "index.ts")],
+  logging: false,
+};
+
+export const dbDatasource = new DataSource(commonOptions);
+
 export async function DbConfig() {
-  const dbConfig = new DataSource({
-    type: "postgres" as const,
+  dbDatasource.setOptions({
     url: process.env.DATABASE_URL,
-    entities: [path.join(__dirname, "..", "**", "*.entities.ts")],
-    logging: false,
+    synchronize: true,
   });
 
-  await dbConfig.initialize();
+  await dbDatasource.initialize();
 }
