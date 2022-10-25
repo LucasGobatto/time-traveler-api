@@ -1,19 +1,24 @@
 {
   "name": "time-traveler-api",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
     "start": "node dist/src/index.js",
     "dev": "nodemon --exec ts-node src/index.ts"
   },
   "dependencies": {
+    "apollo-server": "^3.10.3",
+    "apollo-server-express": "3.10.3",
     "cors": "2.8.5",
     "dotenv": "16.0.3",
-    "express": "4.18.2"
+    "express": "4.18.2",
+    "glob": "^8.0.3",
+    "graphql": "16.6.0"
   },
   "devDependencies": {
     "@types/cors": "2.8.12",
     "@types/express": "4.17.14",
+    "@types/glob": "^8.0.0",
     "@types/node": "18.11.4",
     "nodemon": "2.0.20",
     "typescript": "4.8.4"
