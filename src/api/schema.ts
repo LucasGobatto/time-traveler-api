@@ -1,7 +1,9 @@
-import { buildSchema } from "graphql";
+import { gql } from "apollo-server";
 import { createTimeTraveler } from "../modules";
 
-export const schema = buildSchema(`
+export const typeDefs = gql`
+  scalar Date
+
   input TimeTravelerInput {
     name: String!
     birthDate: String!
@@ -20,13 +22,17 @@ export const schema = buildSchema(`
   }
 
   type Mutation {
-    createTimeTraveler(TimeTravelerInput!): TimeTraveler!
+    createTimeTraveler(input: TimeTravelerInput!): TimeTraveler!
   }
-`);
+`;
 
-export const rootValue = {
-  hello: () => {
-    return "Hello world!";
+export const resolvers = {
+  Query: {
+    hello: () => {
+      return "Hello world!";
+    },
   },
-  createTimeTraveler,
+  Mutation: {
+    createTimeTraveler,
+  },
 };

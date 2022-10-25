@@ -1,11 +1,11 @@
 import { ApolloServer } from "apollo-server-express";
 import { formatError } from "./format-error";
-import { rootValue, schema } from "./schema";
+import { resolvers, typeDefs } from "./schema";
 
 export function ApolloConfig() {
   return new ApolloServer({
-    schema,
-    rootValue,
+    typeDefs,
+    resolvers,
     formatError,
   });
 }
