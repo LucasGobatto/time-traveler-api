@@ -9,11 +9,21 @@ export const typeDefs = gql`
     passport: String!
   }
 
+  input LoginInput {
+    passport: String!
+    password: String!
+  }
+
   type TimeTraveler {
     id: String!
     name: String!
     birthDate: Date!
     passport: String!
+  }
+
+  type Login {
+    token: String!
+    timeTraveler: TimeTraveler!
   }
 
   type Query {
@@ -22,5 +32,6 @@ export const typeDefs = gql`
 
   type Mutation {
     createTimeTraveler(input: TimeTravelerInput!): TimeTraveler!
+    login(input: LoginInput!): Login!
   }
 `;
