@@ -11,6 +11,9 @@ export class TimeTravelerEntity {
   @Column()
   birthDate: Date;
 
-  @Column()
+  @Column({ unique: true })
   passport: string;
+
+  @Column()
+  password: string;
 }
