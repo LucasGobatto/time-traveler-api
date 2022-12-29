@@ -1,5 +1,12 @@
-export interface Handler {
-  (parentes?: any, args?: any, context?: any, info?: any): any;
+import { ServerContext } from "../api";
+
+export interface Handler<T = any, R = any> {
+  (
+    parentes?: unknown,
+    args?: { input: T },
+    context?: ServerContext,
+    info?: unknown
+  ): R | Promise<R>;
 }
 
 export interface ResolverModel {

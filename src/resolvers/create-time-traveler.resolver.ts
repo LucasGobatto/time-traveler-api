@@ -1,8 +1,9 @@
 import { ResolverModel } from "../model";
-import { createTimeTraveler } from "../modules";
+import { createTimeTravelerUseCase, loginUseCase } from "../modules";
 
 export const TimeTravelerResolver: ResolverModel = {
   Mutation: {
-    createTimeTraveler,
+    createTimeTraveler: createTimeTravelerUseCase,
+    login: loginUseCase,
   },
 };

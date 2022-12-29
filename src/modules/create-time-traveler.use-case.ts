@@ -1,9 +1,13 @@
+import { authCheck } from "../api";
 import { dbDatasource } from "../data";
 import { TimeTravelerEntity } from "../entities/time-traveler.entity";
 import { Handler, TimeTravelerInputModel, TimeTravelerModel } from "../model";
 
-export const createTimeTraveler: Handler = (_parent: any, args: { input: TimeTravelerInputModel }): Promise<TimeTravelerModel> => {
-  const { input } = args;
+export const createTimeTravelerUseCase: Handler<
+  TimeTravelerInputModel,
+  TimeTravelerModel
+> = (_, { input }, context) => {
+  authCheck(context);
   const repository = dbDatasource.getRepository(TimeTravelerEntity);
 
   const timeTraveler = {
@@ -12,7 +16,11 @@ export const createTimeTraveler: Handler = (_parent: any, args: { input: TimeTra
     passport: input?.passport,
   };
 
-  if (!(timeTraveler.birthDate < new Date()) || !timeTraveler.name || !timeTraveler.passport) {
+  if (
+    !(timeTraveler.birthDate < new Date()) ||
+    !timeTraveler.name ||
+    !timeTraveler.passport
+  ) {
     throw new Error("Invalid input. Input badly formatted");
   }
 

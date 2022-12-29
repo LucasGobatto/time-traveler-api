@@ -9,6 +9,7 @@ export function ApolloConfig() {
   return new ApolloServer({
     typeDefs,
     resolvers: getResolvers(),
+    context: ({ req }) => ({ token: req.headers.authorization }),
     formatError,
   });
 }
@@ -19,7 +20,9 @@ function getResolvers() {
   const basePath = path.join(__dirname, "..", "..");
 
   resolversPaths.map((file) => {
-    const [_, resolver] = Object.entries(require(path.join(basePath, file.replace(".ts", ""))))[0] as [string, ResolverModel];
+    const [_, resolver] = Object.entries(
+      require(path.join(basePath, file.replace(".ts", "")))
+    )[0] as [string, ResolverModel];
 
     if (resolver.Query) {
       resolvers.Query = { ...resolvers.Query, ...resolver.Query };
